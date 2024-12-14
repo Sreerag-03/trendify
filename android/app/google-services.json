@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "302833476086",
+    "project_id": "trendify-16b9a",
+    "storage_bucket": "trendify-16b9a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:302833476086:android:49403fd5407f26f8ce67d7",
+        "android_client_info": {
+          "package_name": "com.example.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWd9zkeI7vAgzOgUse9qWjEaJRqcQ46Z0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
