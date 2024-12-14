@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trendify/screens/cart_screen.dart';
 import '../services/product_service.dart';
 import '../models/product_model.dart';
 import '../widgets/product_tile.dart';
@@ -23,9 +24,21 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Products')),
+      appBar: AppBar(
+        title: const Text('Products'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.shopping_cart),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CartScreen()),
+              );
+            },
+          ),
+        ],
+      ),
       body: FutureBuilder<List<Product>>(
-        
         future: _productsFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {

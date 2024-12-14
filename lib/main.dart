@@ -1,17 +1,26 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:trendify/firebase_options.dart';
+import 'package:trendify/providers/cart_provider.dart';
 import 'package:trendify/screens/home_screen.dart';
 import 'package:trendify/screens/login_screen.dart';
 import 'package:trendify/screens/product_detail_screen.dart';
 import 'package:trendify/screens/register_screen.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-  options: DefaultFirebaseOptions.currentPlatform,
-);
-  runApp(const MyApp());
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (ctx)=> CartProvider()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -28,10 +37,12 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/home',
       routes: {
-        '/home': (context) => const HomeScreen(), 
+        '/home': (context) => const HomeScreen(),
         '/login': (context) => const LoginScreen(),
         '/register': (context) => const RegisterScreen(),
-        '/product-details': (context) => ProductDetailsScreen(productId: '',),
+        '/product-details': (context) => ProductDetailsScreen(
+              productId: '',
+            ),
       },
     );
   }
