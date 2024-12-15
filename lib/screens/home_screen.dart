@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Products'),
-        actions: [
+        actions: [ 
           IconButton(
             icon: const Icon(Icons.shopping_cart),
             onPressed: () {

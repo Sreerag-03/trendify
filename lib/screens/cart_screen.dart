@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:trendify/providers/cart_provider.dart';
+import 'package:trendify/screens/orders/order_history_screen.dart';
 import 'package:trendify/services/payment_service.dart';
 
 class CartScreen extends StatelessWidget {
@@ -12,6 +13,15 @@ class CartScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Your Cart"),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (ctx) => OrderHistoryScreen()),
+                );
+              },
+              icon: const Icon(Icons.history))
+        ],
       ),
       body: Column(
         children: [
@@ -40,7 +50,8 @@ class CartScreen extends StatelessWidget {
                 ),
                 Text(
                   "₹$totalAmount",
-                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                      fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
@@ -49,7 +60,8 @@ class CartScreen extends StatelessWidget {
             onPressed: () async {
               try {
                 await PaymentService.initiateGooglePay(
-                  upiId: "bahirgondeshubham-1@okhdfcbank", // Replace with your merchant UPI ID
+                  upiId:
+                      "bahirgondeshubham-1@okhdfcbank", // Replace with your merchant UPI ID
                   name: "Shubham",
                   amount: totalAmount,
                 );
