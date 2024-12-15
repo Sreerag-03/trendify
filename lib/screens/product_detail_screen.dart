@@ -13,7 +13,7 @@ class ProductDetailsScreen extends StatelessWidget {
     final product = {
       'id': productId,
       'name': 'Sample Product',
-      'price': 99.99,
+      'price': 1.1,
       'description': 'This is a detailed description.',
     };
 

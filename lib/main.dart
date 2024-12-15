@@ -5,6 +5,8 @@ import 'package:trendify/firebase_options.dart';
 import 'package:trendify/providers/cart_provider.dart';
 import 'package:trendify/screens/home_screen.dart';
 import 'package:trendify/screens/login_screen.dart';
+import 'package:trendify/screens/orders/confirmation_screen.dart';
+import 'package:trendify/screens/orders/order_history_screen.dart';
 import 'package:trendify/screens/product_detail_screen.dart';
 import 'package:trendify/screens/register_screen.dart';
 
@@ -16,7 +18,7 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (ctx)=> CartProvider()),
+        ChangeNotifierProvider(create: (ctx) => CartProvider()),
       ],
       child: const MyApp(),
     ),
@@ -40,9 +42,10 @@ class MyApp extends StatelessWidget {
         '/home': (context) => const HomeScreen(),
         '/login': (context) => const LoginScreen(),
         '/register': (context) => const RegisterScreen(),
-        '/product-details': (context) => ProductDetailsScreen(
-              productId: '',
-            ),
+        '/product-details': (context) =>
+            const ProductDetailsScreen(productId: ''),
+        '/orderHistory': (ctx) => OrderHistoryScreen(),
+        '/orderConfirmation': (ctx) => ConfirmationScreen(orderId: ''),
       },
     );
   }
